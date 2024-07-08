@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.text;
 
-public class FillStudentRegistrationForm {
+public class fillStudentRegistrationForm {
 
     @BeforeAll
     static void beforeAll() {
