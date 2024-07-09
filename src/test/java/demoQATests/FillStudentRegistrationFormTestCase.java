@@ -1,6 +1,5 @@
 package demoQATests;
 
-import java.io.File;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
@@ -18,7 +17,7 @@ public class FillStudentRegistrationFormTestCase {
     }
 
     @Test
-    void fillStudentForm() {
+    void fillStudentFormTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -34,8 +33,8 @@ public class FillStudentRegistrationFormTestCase {
         $(".react-datepicker__year-select").selectOption("1990");
         $(".react-datepicker__day--012:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#hobbies-checkbox-2").parent().click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/s3e20.png"));
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#uploadPicture").uploadFromClasspath("s3e20.png");
         $("#currentAddress").setValue("We're somewhere in the woods chasing aliens.");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
