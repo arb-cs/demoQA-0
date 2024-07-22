@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class FillStudentRegistrationFormPageObject extends TestBase {
+public class FillStudentRegistrationForm extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
