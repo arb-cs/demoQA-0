@@ -1,37 +1,26 @@
-package demoQATests;
+package tests;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import com.codeborne.selenide.Configuration;
+import pages.RegistrationPage;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class FillStudentRegistrationFormTestCase {
+public class FillStudentRegistrationFormPageObject extends TestBase {
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fillStudentFormTest() {
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        registrationPage.openPage()
+                        .setFirstName("Dana")
+                        .setLastName("Scully")
+                        .setEmail("dana_scully@xfiles.com")
+                        .setGender("Female")
+                        .setPhoneNumber("9881234567")
+                        .setBirthDate("12", "December", "1990");
 
-        // Fill in the fields for the registration form.
-        $("#firstName").setValue("Dana");
-        $("#lastName").setValue("Scully");
-        $("#userEmail").setValue("dana_scully@xfiles.com");
-        $("#gender-radio-2").parent().click();
-        $("#userNumber").setValue("9881234567");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("December");
-        $(".react-datepicker__year-select").selectOption("1990");
-        $(".react-datepicker__day--012:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("s3e20.png");
