@@ -2,9 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FillStudentRegistrationForm extends TestBase {
@@ -19,18 +17,17 @@ public class FillStudentRegistrationForm extends TestBase {
                         .setEmail("dana_scully@xfiles.com")
                         .setGender("Female")
                         .setPhoneNumber("9881234567")
-                        .setBirthDate("12", "December", "1990");
-
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("s3e20.png");
-        $("#currentAddress").setValue("We're somewhere in the woods chasing aliens.");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
-
+                        .setBirthDate("12", "December", "1990")
+                        .setSubjects("Arts")
+                        .setHobbies("Reading")
+                        .setPicture("s3e20.png")
+                        .setAddress("We're somewhere in the woods chasing aliens.")
+                        .clickOnSelectStateList()
+                        .setState("NCR")
+                        .clickOnSelectCityList()
+                        .setCity("Delhi")
+                        .clickSubmit();
+        
         // Validate student's input.
         $(".table").shouldHave(text("Student Name Dana Scully"));
         $(".table").shouldHave(text("Student Email dana_scully@xfiles.com"));
