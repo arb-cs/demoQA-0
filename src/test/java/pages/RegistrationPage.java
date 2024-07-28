@@ -1,36 +1,45 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableComponent;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class RegistrationPage extends Base {
+public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         return this;
     }
 
-    private SelenideElement firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName"),
-            emailInput = $("#userEmail"),
-            genderWrapper = $("#genterWrapper"),
-            phoneNumber = $("#userNumber"),
-            calendarInput = $("#dateOfBirthInput"),
-            subjectsInput = $("#subjectsInput"),
-            hobbiesWrapper = $("#hobbiesWrapper"),
-            uploadPicture = $("#uploadPicture"),
-            currentAddressInput = $("#currentAddress"),
-            stateInput = $("#state"),
-            setState = $("#stateCity-wrapper"),
-            cityInput = $("#city"),
-            selectCity = $("#stateCity-wrapper"),
-            submitButton = $("#submit");
+    public RegistrationPage removeUnnecessaryElementsFromPage() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
+    public final SelenideElement firstNameInput = $("#firstName");
+    public final SelenideElement lastNameInput = $("#lastName");
+    private final SelenideElement emailInput = $("#userEmail");
+    private final SelenideElement selectGender = $("#genterWrapper");
+    public final SelenideElement phoneNumberInput = $("#userNumber");
+    private final SelenideElement calendarInput = $("#dateOfBirthInput");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement selectHobbies = $("#hobbiesWrapper");
+    private final SelenideElement uploadPicture = $("#uploadPicture");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement stateInput = $("#state");
+    private final SelenideElement setState = $("#stateCity-wrapper");
+    private final SelenideElement cityInput = $("#city");
+    private final SelenideElement selectCity = $("#stateCity-wrapper");
+    private final SelenideElement submitButton = $("#submit");
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    TableComponent tableComponent = new TableComponent();
 
     public RegistrationPage setFirstName(String firstName) {
         firstNameInput.setValue(firstName);
@@ -48,12 +57,12 @@ public class RegistrationPage extends Base {
     }
 
     public RegistrationPage setGender(String sex) {
-        genderWrapper.$(byText(sex)).click();
+        selectGender.$(byText(sex)).click();
         return this;
     }
 
-    public RegistrationPage setPhoneNumber(String number) {
-        phoneNumber.setValue(number);
+    public RegistrationPage setPhoneNumberInput(String number) {
+        phoneNumberInput.setValue(number);
         return this;
     }
 
@@ -69,7 +78,7 @@ public class RegistrationPage extends Base {
     }
 
     public RegistrationPage setHobbies(String hobbies) {
-        hobbiesWrapper.$(byText(hobbies)).click();
+        selectHobbies.$(byText(hobbies)).click();
         return this;
     }
 
@@ -83,22 +92,14 @@ public class RegistrationPage extends Base {
         return this;
     }
 
-    public RegistrationPage clickOnSelectStateList() {
-        stateInput.click();
-        return this;
-    }
-
     public RegistrationPage setState(String state) {
+        stateInput.click();
         setState.$(byText(state)).click();
         return this;
     }
 
-    public RegistrationPage clickOnSelectCityList() {
-        cityInput.click();
-        return this;
-    }
-
     public  RegistrationPage setCity(String city) {
+        cityInput.click();
         selectCity.$(byText(city)).click();
         return this;
     }
@@ -108,4 +109,14 @@ public class RegistrationPage extends Base {
         return this;
     }
 
+    public RegistrationPage validateResult(String element, String value) {
+        tableComponent.checkResult(element, value);
+        return this;
+    }
+
+    public RegistrationPage borderColourIsRed(SelenideElement element) {
+        String redColour = "rgb(220, 53, 69)";
+        element.shouldHave(Condition.cssValue("border-color", redColour));
+        return this;
+    }
 }
