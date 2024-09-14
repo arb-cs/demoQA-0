@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
+    @Step("Open the student registration form.")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         return this;
@@ -19,6 +20,7 @@ public class RegistrationPage {
     public RegistrationPage removeUnnecessaryElementsFromPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        executeJavaScript("$(\"[id*='google_ads_iframe']\").remove()");
         return this;
     }
 
