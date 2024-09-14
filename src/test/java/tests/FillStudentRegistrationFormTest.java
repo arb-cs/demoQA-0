@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -14,6 +18,9 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @Owner("arb-cs")
+    @DisplayName("Fill all of the fields in the student registration form.")
+    @Severity(SeverityLevel.CRITICAL)
     void fillStudentFormTest() {
         registrationPage.openPage()
                         .removeUnnecessaryElementsFromPage()
@@ -44,6 +51,9 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @Owner("arb-cs")
+    @DisplayName("Fill only required fields in the student registration form.")
+    @Severity(SeverityLevel.CRITICAL)
     void fillOnlyRequiredFieldsTest() {
         registrationPage.openPage()
                 .removeUnnecessaryElementsFromPage()
@@ -59,7 +69,11 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
-    void noFieldHasBeenFilledInTest() {
+    @Tag("demoqa")
+    @Owner("arb-cs")
+    @DisplayName("Do not fill any fields.")
+    @Severity(SeverityLevel.CRITICAL)
+    void noFieldsHasBeenFilledInTest() {
         registrationPage.openPage()
                 .removeUnnecessaryElementsFromPage()
                 .clickSubmit()
