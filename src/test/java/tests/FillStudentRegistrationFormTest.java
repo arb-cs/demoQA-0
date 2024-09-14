@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.TestingData;
@@ -12,6 +13,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
     String city = testingData.getCity(state);
 
     @Test
+    @Tag("demoqa")
     void fillStudentFormTest() {
         registrationPage.openPage()
                         .removeUnnecessaryElementsFromPage()
@@ -41,6 +43,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void fillOnlyRequiredFieldsTest() {
         registrationPage.openPage()
                 .removeUnnecessaryElementsFromPage()
@@ -55,6 +58,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void noFieldHasBeenFilledInTest() {
         registrationPage.openPage()
                 .removeUnnecessaryElementsFromPage()
