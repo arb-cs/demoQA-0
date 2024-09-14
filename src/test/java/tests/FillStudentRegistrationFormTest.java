@@ -69,7 +69,6 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
-    @Tag("demoqa")
     @Owner("arb-cs")
     @DisplayName("Do not fill any fields.")
     @Severity(SeverityLevel.CRITICAL)
