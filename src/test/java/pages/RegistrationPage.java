@@ -20,7 +20,9 @@ public class RegistrationPage {
     public RegistrationPage removeUnnecessaryElementsFromPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        executeJavaScript("$(\"[id*='google_ads_iframe']\").remove()");
+        executeJavaScript("$(\"[id*='Ad.Plus']\").remove()");
+        executeJavaScript("$(\"[id*='google_ads_iframe_']\").remove()");
+        executeJavaScript("$(\"[id*='gpt_unit_']\").remove()");
         return this;
     }
 
