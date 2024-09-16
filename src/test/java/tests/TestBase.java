@@ -16,10 +16,10 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = System.getProperty("REMOTE", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-        Configuration.browser = System.getProperty("BROWSER", "chrome");
-        Configuration.browserVersion = System.getProperty("VERSION", "100.0");
-        Configuration.browserSize = System.getProperty("RESOLUTION", "1920x1080");
+        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of (
                 "enableVNC", true,
