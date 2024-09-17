@@ -14,4 +14,4 @@
 
 ### Other ###
 build/
-java/config.json
+src/test/java/config.json
