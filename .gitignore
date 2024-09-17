@@ -1,7 +1,7 @@
 ### Required ###
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
-!**/src/test/**
+##!**/src/test/**
 
 ### Gradle ###
 .gradle
@@ -14,4 +14,3 @@
 
 ### Other ###
 build/
-config.json
