@@ -1,6 +1,8 @@
 package utils;
 
 import com.github.javafaker.Faker;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class TestingData {
@@ -10,11 +12,8 @@ public class TestingData {
     public String lastName = faker.name().lastName();
     public String email = faker.internet().emailAddress();
     public String sex = faker.options().option("Male", "Female", "Other");
+    public Date birthday = faker.date().birthday();
     public String phoneNumber = faker.number().digits(10);
-    public String day = String.valueOf(faker.number().numberBetween(1, 28));
-    public String month = faker.options().option("January", "February", "March", "April", "May",
-            "June", "July", "August", "September", "October", "November", "December");
-    public String year = String.valueOf(faker.number().numberBetween(1900, 2006));
     public String subjects = faker.options()
             .option("Maths", "Physics", "Chemistry", "Computer Science", "Economics", "Arts", "Social Studies", "History", "Civics");
     public String hobbies = faker.options().option("Sports", "Reading", "Music");
@@ -34,4 +33,21 @@ public class TestingData {
         }
         return state;
     }
+
+    public String day() {
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
+        return dayFormat.format(birthday);
+    }
+
+    public String month() {
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
+        return monthFormat.format(birthday);
+    }
+
+    public String year() {
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+        return yearFormat.format(birthday);
+    }
+
+
 }
