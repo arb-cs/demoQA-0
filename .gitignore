@@ -14,4 +14,4 @@
 
 ### Other ###
 build/
-java/notifications
+src/test/java/notifications
