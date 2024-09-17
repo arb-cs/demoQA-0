@@ -20,6 +20,7 @@ public class TestBase {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of (
                 "enableVNC", true,
@@ -37,9 +38,12 @@ public class TestBase {
     @AfterEach
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        if (!Configuration.browser.equals("firefox")) {
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+        }
 
         Selenide.closeWebDriver();
     }
