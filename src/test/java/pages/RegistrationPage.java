@@ -20,9 +20,6 @@ public class RegistrationPage {
     public RegistrationPage removeUnnecessaryElementsFromPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        executeJavaScript("$(\"[id*='Ad.Plus']\").remove()");
-        executeJavaScript("$(\"[id*='google_ads_iframe_']\").remove()");
-        executeJavaScript("$(\"[id*='gpt_unit_']\").remove()");
         return this;
     }
 
@@ -85,7 +82,7 @@ public class RegistrationPage {
 
     @Step("Set subjects.")
     public RegistrationPage setSubjects(String subject) {
-        subjectsInput.setValue(subject).pressEnter();
+        subjectsInput.scrollIntoView(true).setValue(subject).pressEnter();
         return this;
     }
 
@@ -103,27 +100,27 @@ public class RegistrationPage {
 
     @Step("Set an address")
     public RegistrationPage setAddress(String address) {
-        currentAddressInput.setValue(address);
+        currentAddressInput.scrollIntoView(true).setValue(address);
         return this;
     }
 
     @Step("Set a state.")
     public RegistrationPage setState(String state) {
         stateInput.click();
-        setState.$(byText(state)).click();
+        setState.$(byText(state)).scrollIntoView(true).click();
         return this;
     }
 
     @Step("Set a city.")
     public  RegistrationPage setCity(String city) {
         cityInput.click();
-        selectCity.$(byText(city)).click();
+        selectCity.$(byText(city)).scrollIntoView(true).click();
         return this;
     }
 
     @Step("Click the submit button.")
     public RegistrationPage clickSubmit() {
-        submitButton.click();
+        submitButton.scrollIntoView(true).click();
         return this;
     }
 
