@@ -18,6 +18,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @Tag("Positive")
     @Owner("arb-cs")
     @DisplayName("Fill all of the fields in the student registration form.")
     @Severity(SeverityLevel.CRITICAL)
@@ -51,6 +52,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @Tag("Positive")
     @Owner("arb-cs")
     @DisplayName("Fill only required fields in the student registration form.")
     @Severity(SeverityLevel.CRITICAL)
@@ -69,6 +71,7 @@ public class FillStudentRegistrationFormTest extends TestBase {
 
     @Test
     @Tag("demoqa")
+    @Tag("Negative")
     @Owner("arb-cs")
     @DisplayName("Do not fill any fields.")
     @Severity(SeverityLevel.CRITICAL)
