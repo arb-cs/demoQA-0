@@ -107,7 +107,7 @@ public class RegistrationPage {
     @Step("Set a state.")
     public RegistrationPage setState(String state) {
         stateInput.click();
-        setState.$(byText(state)).scrollIntoView(false).click();
+        setState.$(byText(state)).scrollIntoView(true).click();
         return this;
     }
 
