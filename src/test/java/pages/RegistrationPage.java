@@ -88,7 +88,7 @@ public class RegistrationPage {
 
     @Step("Set hobbies.")
     public RegistrationPage setHobbies(String hobbies) {
-        selectHobbies.$(byText(hobbies)).scrollIntoView(true).click();
+        selectHobbies.$(byText(hobbies)).scrollIntoView(false).click();
         return this;
     }
 
@@ -107,7 +107,7 @@ public class RegistrationPage {
     @Step("Set a state.")
     public RegistrationPage setState(String state) {
         stateInput.click();
-        setState.$(byText(state)).scrollIntoView(true).click();
+        setState.$(byText(state)).scrollIntoView(false).click();
         return this;
     }
 
