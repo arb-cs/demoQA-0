@@ -16,10 +16,9 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.pageLoadStrategy = System.getProperty("pageLoadStrategy", "eager");
-//        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-//        Configuration.browser = System.getProperty("browser", "chrome");
-//        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-        Configuration.browser = "firefox";
+        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
